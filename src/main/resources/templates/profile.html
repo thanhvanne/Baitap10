@@ -4,20 +4,58 @@
   <meta charset="utf-8"/>
   <title>Profile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="/css/app.css" rel="stylesheet"/>
 </head>
 <body>
-<div class="container mt-4" style="max-width: 700px;">
-  <h3 class="mb-3">Spring Boot REST API with AJAX Example</h3>
 
-  <div id="feedback" class="text-danger mb-2"></div>
+<div class="page-wrap">
+  <div class="card-glass profile-card">
+    <div class="card-header-custom">
+      <h3 class="brand">Spring Boot REST API with AJAX Example</h3>
+      <div class="muted">/users/me (Bearer Token)</div>
+    </div>
 
-  <img id="images" src="" alt="avatar" style="width:120px;height:120px;object-fit:cover;border:1px solid #ddd" />
-  <div class="mt-2">
-    <b id="profile"></b>
+    <div class="card-body-custom">
+      <div id="feedback" class="alert alert-danger d-none mb-3"></div>
+
+      <div class="d-flex align-items-center gap-3">
+        <img id="images" class="avatar" src="/images/u1.jpg" alt="avatar"/>
+        <div>
+          <div id="profile" style="font-size: 20px; font-weight: 800;">...</div>
+          <div class="muted" id="emailText">...</div>
+        </div>
+      </div>
+
+      <div class="kv row g-3 mt-2">
+        <div class="col-md-6">
+          <div class="label">User ID</div>
+          <div class="value" id="userIdText">...</div>
+        </div>
+        <div class="col-md-6">
+          <div class="label">Image path</div>
+          <div class="value" id="imagePathText">...</div>
+        </div>
+      </div>
+
+      <!-- Hiển thị JWT để thấy rõ login đã nhận token (demo) -->
+      <div class="kv mt-3">
+        <div class="label mb-2">JWT (from localStorage)</div>
+        <textarea id="jwtText" class="form-control" rows="4" readonly
+                  style="font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;"></textarea>
+        <div class="d-flex gap-2 mt-2">
+          <button id="copyJwt" class="btn btn-outline-light btn-sm" style="border-color: rgba(255,255,255,.2);">
+            Copy token
+          </button>
+        </div>
+      </div>
+
+      <div class="d-flex gap-2 mt-4">
+        <button id="logout" class="btn btn-danger">Logout</button>
+      </div>
+    </div>
   </div>
-
-  <button id="logout" class="btn btn-danger mt-3">Logout</button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
